@@ -14,29 +14,29 @@ export type Stats = Record<StatKey, number>;
 export type EvolutionMethod = 'level' | 'stone' | 'trade' | 'friendship' | 'other';
 
 export interface EvolutionLink {
-  to: number;            // id nacional de la especie destino
+  to: number;            // id nacional de la especie
   method: EvolutionMethod;
   level?: number;        // solo si method === 'level'
 }
 
-/** Datos de la especie, iguales en todas las versiones. */
+//Datos de la especie, iguales en todas las versiones.
 export interface Species {
   id: number;            // número de Pokédex nacional
-  slug: string;          // 'gardevoir'
+  slug: string;
   names: { en: string; es: string };
   evolutions: EvolutionLink[];
   isLegendary: boolean;  // legendarios y singulares
 }
 
-/** Datos que cambian según la generación. */
+// Datos que cambian según la generación.
 export interface SpeciesGenData {
   speciesId: number;
   types: PokemonType[];
   baseStats: Stats;
-  abilities: string[];   // vacío en Gen I-II
+  abilities: string[];   // vacío en generacion I-II
 }
 
-/** Cómo se consigue una especie en una versión concreta. */
+//Cómo se consigue una especie en una version concreta.
 export interface Availability {
   speciesId: number;
   method: 'wild' | 'gift' | 'static' | 'trade' | 'fossil';
